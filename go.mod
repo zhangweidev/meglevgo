@@ -1,3 +1,3 @@
-module zhengweidev/meglev
+module github.com/zhengweidev/meglev
 
 go 1.20
