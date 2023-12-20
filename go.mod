@@ -1,4 +1,4 @@
-module github.com/zhengweidev/meglevgo
+module github.com/zhangweidev/meglevgo
 
 go 1.20
 
