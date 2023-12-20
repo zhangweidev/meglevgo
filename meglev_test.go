@@ -1,4 +1,4 @@
-package meglev
+package meglevgo
 
 import (
 	"strconv"
