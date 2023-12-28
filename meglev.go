@@ -71,7 +71,12 @@ func (m *Meglev) hashs(token uint64, key string) uint64 {
 }
 
 func (m *Meglev) Get(key string) string {
+	if len(m.Nodes) == 0 {
+		return ""
+	}
+
 	i := m.hashs(0xabcd1234, key) % uint64(m.lookupsnum)
+
 	index := m.lookups[i]
 	return m.Nodes[index-1].Name
 }
