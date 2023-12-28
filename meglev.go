@@ -70,20 +70,6 @@ func (m *Meglev) hashs(token uint64, key string) uint64 {
 	return siphash.Hash(token, 0, []byte(key))
 }
 
-// 生成哈希
-// func hashs(token, name string) int64 {
-// 	key := token + name
-
-// 	hasher := md5.New()
-// 	hasher.Write([]byte(key))
-// 	encode := hasher.Sum(nil)
-// 	res := int64(binary.BigEndian.Uint64(encode))
-// 	if res < 0 {
-// 		res = -res
-// 	}
-// 	return res
-// }
-
 func (m *Meglev) Get(key string) string {
 	i := m.hashs(0xabcd1234, key) % uint64(m.lookupsnum)
 	index := m.lookups[i]
@@ -118,6 +104,14 @@ func (m *Meglev) lookuptable() {
 	if len(m.Nodes) == 0 {
 		return
 	}
+
+	if len(m.Nodes) == 1 {
+		for i := 0; i < m.lookupsnum; i++ {
+			m.lookups[i] = 1
+		}
+		return
+	}
+
 	next := make([]int, len(m.Nodes))
 	sum := 0
 	for {

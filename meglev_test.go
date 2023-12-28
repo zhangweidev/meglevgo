@@ -36,17 +36,9 @@ func Test_Meglev(t *testing.T) {
 	meglev := NewMeglev([]*Node{
 		{Name: "am", Width: 1},
 		{Name: "es", Width: 1},
-		{Name: "c", Width: 1},
-		{Name: "d", Width: 2},
+		// {Name: "c", Width: 1},
+		// {Name: "d", Width: 2},
 	})
-
-	// for _, node := range meglev.Nodes {
-	// 	t.Log(node.Name)
-	// }
-
-	// for i, lookup := range meglev.lookups {
-	// 	fmt.Println(i, lookup)
-	// }
 
 	m := make(map[string]int)
 	for i := 0; i < 10000000; i++ {
